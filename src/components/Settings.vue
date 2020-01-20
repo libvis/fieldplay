@@ -123,10 +123,10 @@ import appState from '../lib/appState';
 import SoundLoader from '../lib/sound/soundLoader';
 import SoundCloudAudioSource from '../lib/sound/audioSource';
 import config from '../lib/config';
-import Syntax from './help/Syntax';
-import HelpIcon from './help/Icon';
-import CodeEditor from './CodeEditor';
-import Inputs from './Inputs';
+import Syntax from './help/Syntax.vue';
+import HelpIcon from './help/Icon.vue';
+import CodeEditor from './CodeEditor.vue';
+import Inputs from './Inputs.vue';
 
 // Temporary disable this until API is finished.
 const soundAvailable = config.isAudioEnabled;

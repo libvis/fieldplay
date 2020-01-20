@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import Controls from './components/Controls';
-import Ruler from './components/Ruler';
-import Settings from './components/Settings';
-import Share from './components/Share';
-import About from './components/About';
+import Controls from './components/Controls.vue';
+import Ruler from './components/Ruler.vue';
+import Settings from './components/Settings.vue';
+import Share from './components/Share.vue';
+import About from './components/About.vue';
 import bus from './lib/bus';
 import isSmallScreen from './lib/isSmallScreen';
-import VectorView from './components/VectorView';
+import VectorView from './components/VectorView.vue';
 import config from './lib/config';
 import createDrag from './lib/utils/drag.js';
 import appState from './lib/appState';
@@ -64,7 +64,7 @@ export default {
     return {
       scene: null,
       width: MIN_SETTINGS_WIDTH,
-      webGLEnabled: window.webGLEnabled,
+      webGLEnabled: true,//window.webGLEnabled,
       aboutVisible: false,
       hideUI: appState.getQS().get('ui') === 0,
       vectorLinesEnabled: config.vectorLinesEnabled
