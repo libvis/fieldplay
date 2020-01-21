@@ -44,6 +44,7 @@ export default function createVectorFieldEditorState(drawProgram) {
   }
 
   function setCode(vectorFieldCode) {
+    console.log('Tryin set code', vectorFieldCode)
     if (vectorFieldCode === currentVectorFieldCode) {
       // If field hasn't changed, let's make sure that there was no previous
       // error
@@ -64,7 +65,7 @@ export default function createVectorFieldEditorState(drawProgram) {
 
       currentVectorFieldCode = vectorFieldCode;
       api.code = vectorFieldCode;
-      appState.saveCode(vectorFieldCode);
+        //appState.saveCode(vectorFieldCode);
     });
   }
 

@@ -156,6 +156,7 @@ export default {
       vectorField: null,
       settingsPanel: appState.settingsPanel,
       inputsModel: scene.inputsModel,
+    code:scene.code,
       showBindings: config.showBindings,
       particlesCount: 0,
       fadeOutSpeed: 0,
@@ -184,7 +185,12 @@ export default {
     timeStep(newValue, oldValue) {
       this.scene.setIntegrationTimeStep(newValue);
     },
+    'scene.fadeOutSpeed': function(newValue, oldValue) {
+        console.log("scenesettings watch fade out", newValue, oldValue);
+      this.scene.setFadeOutSpeed(newValue);
+    },
     fadeOutSpeed(newValue, oldValue) {
+        console.log("settings watch fade out", newValue, oldValue);
       this.scene.setFadeOutSpeed(newValue);
     },
     dropProbability(newValue, oldValue) {
@@ -254,7 +260,8 @@ export default {
     },
 
     onSceneReady(scene) {
-      this.vectorField = scene.vectorFieldEditorState;
+        console.log("onSceneReady",scene, String(scene.code))
+
       this.particlesCount = scene.getParticlesCount();
       this.fadeOutSpeed = scene.getFadeOutSpeed();
       this.dropProbability = scene.getDropProbability();

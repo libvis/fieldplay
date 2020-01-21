@@ -47,6 +47,7 @@ export default {
   },
   watch: {
     'model.code': function() {
+        console.log("Model code watch", this.model)
       if (this.pendingSetCode) {
         clearTimeout(this.pendingSetCode);
       }

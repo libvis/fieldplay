@@ -40,9 +40,13 @@ import appState from './lib/appState';
 const MIN_SETTINGS_WIDTH = 395;
 
 export default {
+  props: ['options','code','scene'],
   name: 'app',
   mounted() {
-    this.scene = window.scene;
+    //this.scene = window.scene;
+    //this.scene.vectorFieldEditorState.setCode( this.code)
+    this.scene.code = this.code;
+    console.log('in app',this.scene);
     bus.fire('scene-ready', window.scene);
     this.updateControlsStyle = this.updateControlsStyle.bind(this);
     window.addEventListener('resize', this.updateControlsStyle, true);
@@ -60,6 +64,18 @@ export default {
       this.scene = null;
     }
   },
+    watch:{
+        code: function(new_val, old){
+            console.log("change code",this.scene,new_val,old);
+            this.scene.vectorFieldEditorState.setCode(new_val)
+        },
+        options:function (newVal, old){
+            console.log("change optionst",this.scene,newVal)
+            this.scene.setFadeOutSpeed(newVal.fade)
+            this.scene.setParticlesCount(newVal.count)
+            this.scene.setColorMode(newVal.color)
+        }
+    },
   data() {
     return {
       scene: null,

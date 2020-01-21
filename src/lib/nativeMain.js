@@ -11,12 +11,12 @@ import { initAutoMode } from './autoMode';
 export default function main(){
     var canvas = document.getElementById('scene');
     // Canvas may not be available in test run
-    if (canvas) initVectorFieldApp(canvas);
+    if (canvas){
+       return initVectorFieldApp(canvas);
+    }
 
 
     function initVectorFieldApp(canvas) {
-      canvas.width = window.innerWidth;
-      canvas.height =  window.innerHeight;
       var ctxOptions = {antialiasing: false };
 
       var gl = canvas.getContext('webgl', ctxOptions) ||
@@ -25,10 +25,11 @@ export default function main(){
       if (gl) {
         window.webGLEnabled = true;
         var scene = initScene(gl);
-        console.log('scene',scene)
+        console.log('in main scene',scene)
         scene.start();
         initAutoMode(scene);
         window.scene = scene;
+      return scene
       } else {
         window.webGLEnabled = false;
       }
